@@ -1,0 +1,23 @@
+//https://practice.geeksforgeeks.org/problems/move-last-element-to-front-of-a-linked-list/1
+
+    ListNode *moveToFront(ListNode *head){
+        if(head==NULL||head->next==NULL){
+            return head;
+        }
+        
+        
+        
+        ListNode *temp=head;
+        
+        while(temp->next->next!=NULL){
+            temp=temp->next;
+        }
+        
+        ListNode*latest_head = temp->next;
+        temp->next=NULL;
+        latest_head->next=head;
+        
+        return latest_head;
+        
+        
+    }

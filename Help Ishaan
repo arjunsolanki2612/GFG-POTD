@@ -3,6 +3,7 @@
   He is a bit weak in pattern searching so to help him his teacher told him that the Nth term is related to prime numbers. 
   The Nth term is the difference of N and the closest prime number to N. Help him find the Nth term for a given N.
   
+  //https://practice.geeksforgeeks.org/problems/help-ishaan5837/1
  
   bool isPrime(int N){
 	    for(int i=2;i<N;i++){

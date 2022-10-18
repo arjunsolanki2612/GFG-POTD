@@ -1,0 +1,45 @@
+//https://practice.geeksforgeeks.org/problems/print-diagonally4331/1
+
+//explaination
+  
+  [[1,2,3],
+   [4,5,6],
+   [7,8,9]]
+   
+   O/P = store it in a vector ==> 1 2 4 3 5 7 6 8 9
+   r=3,c=3;
+   we create a map of int as key and vector as value
+   and traversed through the 2D array
+   mp[0]->1
+   mp[1]->2 4
+   mp[2]->3 5 7
+   mp[3]->6 8
+   mp[4]->9
+   
+   and then we traversed through the map and for each key of map we traversed through the vector corresponds to it and then pushed back to a vector
+
+
+//CODE
+	vector<int> downwardDigonal(int N, vector<vector<int>> A)
+	{
+		// Your code goes here
+		vector<int>ans;
+		int r=A.size();
+		int c=A[0].size();
+		
+		map<int,vector<int>>mp;
+		for(int i=0;i<r;i++){
+		    for(int j=0;j<c;j++){
+		        mp[i+j].push_back(A[i][j]);
+		    }
+		}
+		for(auto it:mp){
+		    for(int i=0;i<it.second.size();i++){
+		        ans.push_back(it.second[i]);
+		    }
+		}
+		
+		return ans;
+	}
+  
+  

@@ -79,3 +79,60 @@ int main(){
 	return 0;
 }
 // } Driver Code Ends
+
+// Bottom up 
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution{
+	public:
+	
+	int building = 1;
+	int space    = 0;
+    int M = 1e9+7;
+
+	int TotalWays(int N)
+	{
+	    // Code here
+	    vector<vector<int>>t(N,vector<int>(2));
+	    
+	    for(int i=0;i<N;i++){
+	        for(int j=0;j<2;j++){
+	            // t[i][j]---> denotes the number of ways to construct building till ith plot having j status
+	            // i --> denotes the current position of the plot or the index of the plot
+	            // j --> denotes the status of the plot
+	            
+	            if(i==0){
+	                t[i][j]=1;
+	                continue;
+	            }
+	            
+	            if(j==building){
+	                t[i][j] = t[i-1][space]%M;
+	            }else{
+	                t[i][j] = (t[i-1][building]%M + t[i-1][space]%M)%M;
+	            }
+	        }
+	    }
+	    
+	    long long x = (t[N-1][building]%M + t[N-1][space]%M)%M;
+	    return (x*x)%M;
+	}
+};
+
+//{ Driver Code Starts.
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		int N;
+		cin >> N;
+		Solution ob;
+		int ans = ob.TotalWays(N);
+		cout << ans <<"\n";
+	}
+	return 0;
+}
+// } Driver Code Ends
